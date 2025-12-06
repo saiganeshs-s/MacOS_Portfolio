@@ -1,77 +1,41 @@
-import WindowWrapper from "#hoc/WindowWrapper.jsx";
-import { WindowControls } from "#components";
-import {
-    PanelLeft,
-    ChevronLeft,
-    ChevronRight,
-    ShieldHalf,
-    Search,
-    Share,
-    Plus,
-    Copy,
-    MoveRight,
-} from "lucide-react";
-import { blogPosts } from "#constants";
+import React from "react";
+import WindowWrapper from "../hoc/WindowWrapper";
+
+const CERTIFICATIONS = [
+    { id: "developer", label: "Developer Certification" },
+    { id: "datascience", label: "Data Science Certification" },
+    { id: "generative-ai", label: "Generative AI Certification" },
+    { id: "nptel-java", label: "NPTEL Java Certification" },
+    { id: "devops", label: "DevOps Certification" },
+    { id: "infosys-angular", label: "Infosys Angular Certification" },
+];
 
 const Safari = () => {
     return (
-        <>
-            <div id="window-header">
-                <WindowControls target="safari" />
-
-                <PanelLeft className="ml-10 icon" />
-
-                <div className="flex items-center gap-1 ml-5">
-                    <ChevronLeft className="icon" />
-                    <ChevronRight className="icon" />
-                </div>
-
-                <div className="flex-1 flex-center gap-3">
-                    <ShieldHalf className="icon" />
-
-                    <div className="search">
-                        <Search className="icon" />
-                        <input
-                            type="text"
-                            placeholder="Search or enter website name"
-                            className="flex-1"
-                        />
+        <WindowWrapper title="Safari">
+            <div className="safari-root">
+                {/* Top bar / tab (simple, no “Blogs”) */}
+                <div className="safari-tab-bar">
+                    <div className="safari-tab safari-tab-active">
+                        Certifications
                     </div>
                 </div>
 
-                <div className="flex items-center gap-5">
-                    <Share className="icon" />
-                    <Plus className="icon" />
-                    <Copy className="icon" />
+                {/* Main content */}
+                <div className="safari-content">
+                    <h2 className="safari-heading">Certifications</h2>
+
+                    <ul className="cert-list">
+                        {CERTIFICATIONS.map((cert) => (
+                            <li key={cert.id} className="cert-item">
+                                {cert.label}
+                            </li>
+                        ))}
+                    </ul>
                 </div>
             </div>
-
-            <div className="blog">
-                <h2>My Developer Blog</h2>
-
-                <div className="space-y-8">
-                    {blogPosts.map(({ id, image, title, date, link }) => (
-                        <div key={id} className="blog-post">
-                            <div className="col-span-2">
-                                <img src={image} alt={title} />
-                            </div>
-
-                            <div className="content">
-                                <p>{date}</p>
-                                <h3>{title}</h3>
-
-                                <a href={link} target="_blank" rel="noopener noreferrer">
-                                    Check out the full post <MoveRight className="icon-hover" />
-                                </a>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </>
+        </WindowWrapper>
     );
 };
 
-const SafariWindow = WindowWrapper(Safari, "safari");
-
-export default SafariWindow;
+export default Safari;

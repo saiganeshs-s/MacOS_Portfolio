@@ -12,30 +12,26 @@ const Contact = () => {
 
             <div className="p-5 space-y-5">
                 <img
-                    src="/images/adrian.jpg"
+                    src="/images/ganesh.jpg"
                     alt="Adrian"
                     className="w-20 rounded-full"
                 />
 
-                <h3>Let's Connect</h3>
-                <p>Got an idea? A bug to squash? Or just wanna talk tech? I'm in.</p>
-                <p>contact@jsmastery.pro</p>
+                <h3>Let's Talk</h3>
+                <p>Wanna build something together?I'm in.</p>
+                <p>saiganeshsanagarams@gmail.com</p>
 
                 <ul>
                     {socials.map(({ id, bg, link, icon, text }) => (
                         <li key={id} style={{ backgroundColor: bg }}>
-                            <a
-                                href={link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                title={text}
-                            >
+                            <a href={link} target="_blank" rel="noopener noreferrer" title={text}>
                                 <img src={icon} alt={text} className="size-5" />
                                 <p>{text}</p>
                             </a>
                         </li>
                     ))}
                 </ul>
+
             </div>
         </>
     );
